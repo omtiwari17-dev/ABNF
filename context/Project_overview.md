@@ -1,225 +1,117 @@
-AFTERLIGHT
-Technical Implementation Plan
-Project: Interactive Moon and Mars Space Equipment Discovery Platform
-Tagline: The stories humanity left beyond Earth.
-1. Development Objective
-Build an interactive web platform where users can explore human-made equipment left behind on the Moon and Mars, discover its mission history, view its location in a 3D environment, and experience its story through reading or cinematic audio narration.
+# Project Overview — AFTERLIGHT: Space Archaeology
 
-Apollo 11 is an example dataset for the initial demonstration, not the limit of the platform. The architecture must support multiple missions across both destinations.
-2. Technology Stack
-Component	Technology
-Frontend	Next.js, React, TypeScript
-Styling	Tailwind CSS, shadcn/ui
-Animation	Framer Motion
-3D	Three.js, React Three Fiber, Drei
-Backend	Node.js, Express.js, TypeScript
-Database	PostgreSQL
-ORM	Prisma
-Validation	Zod
-Text-to-Speech	Kokoro TTS (browser-side)
-Audio	Web Audio API
-Media storage	Cloudflare R2
-Frontend hosting	Vercel
-Backend hosting	Render or Railway
+## 1. Project Background
 
+Since the 1960s, NASA has left behind various types of space exploration hardware across the solar system — on the Moon, on Mars, and throughout deep space. This hardware includes rovers, landers, scientific instruments, and spacecraft that have either completed their missions, become inactive, or continue travelling beyond Earth.
 
-3. System Architecture
-The application uses a modular monolith architecture with two independently deployed applications:
-- apps/web — Next.js frontend.
-- apps/api — Express.js backend.
-PostgreSQL stores structured data. Cloudflare R2 stores large media assets such as 3D models, images, and audio files.
+Each piece of equipment has a unique purpose, engineering design, and mission history. More importantly, each has contributed to our understanding of space and the universe.
 
-The frontend communicates with the backend through REST APIs. Three.js rendering, browser-side text-to-speech, and audio mixing run primarily in the browser.
-High-level request flow
-User / Browser
-      |
-      v
-Next.js Frontend (Vercel)
-      |
-      | HTTPS / REST API / JSON
-      v
-Express.js Backend (Render / Railway)
-      |
-      +------> Prisma ORM ------> PostgreSQL (Neon)
-      |
-      +------> Cloudflare R2 (media asset references)
+Our challenge is to create an interactive digital storytelling platform that introduces school-age space enthusiasts to these forgotten robotic explorers and the scientific discoveries they made possible.
 
-Browser-side experiences:
-- Three.js / React Three Fiber: 3D rendering
-- Kokoro TTS: narration generation
-- Web Audio API: narration, ambience and effects mixing
-4. Development Phases
-Phase 1 — Project Foundation
-Tasks
-- Create the project repository.
-- Initialize Next.js with TypeScript.
-- Initialize Express.js with TypeScript.
-- Configure PostgreSQL and Prisma.
-- Configure environment variables.
-- Establish frontend-to-backend communication.
-- Create reusable API response and error-handling structures.
-Deliverable: Working frontend and backend connected to the database.
-Phase 2 — UI/UX and Design System
-Tasks
-- Create the dark, cinematic design system.
-- Implement navigation and responsive layouts.
-- Build the homepage hero.
-- Create the Moon/Mars destination selector.
-- Implement destination-specific routes.
-- Add transitions between destinations.
-Deliverable: Responsive homepage with a working Moon/Mars experience.
-Phase 3 — Database and Backend APIs
-Core database entities
-- Destination
-- Mission
-- Equipment
-- EquipmentEvent
-- EquipmentAsset
-- Story
-- StoryChapter
-- Source
-- Evidence
-Tasks
-- Create the Prisma schema and migrations.
-- Add destination and mission relationships.
-- Create equipment records.
-- Implement event timelines.
-- Connect stories to missions and equipment.
-- Connect evidence to source references.
-- Implement filtering and search.
-Initial API endpoints
-Method	Endpoint	Purpose
-GET	/api/v1/destinations	List Moon and Mars
-GET	/api/v1/missions	List missions, optionally filtered by destination
-GET	/api/v1/missions/:slug	Get mission details
-GET	/api/v1/equipment	List and filter equipment
-GET	/api/v1/equipment/:slug	Get equipment details
-GET	/api/v1/equipment/:id/events	Get equipment timeline
-GET	/api/v1/equipment/:id/evidence	Get supporting evidence
-GET	/api/v1/stories/:id	Get story and chapters
-GET	/api/v1/search	Search missions and equipment
+The platform will combine interactive storytelling, 3D visualizations, historical mission data, and educational experiences to help users understand not only what these machines were, but also how they worked, what they discovered, and why their contributions still matter.
 
+## 2. Technology Stack
 
-Deliverable: Functional API that can serve information about multiple missions and destinations.
-Phase 4 — Mission and Equipment Explorer
-Tasks
-- Build mission listing pages.
-- Create individual mission detail pages.
-- Build equipment cards and detail pages.
-- Add destination, mission, and equipment filters.
-- Display operational and physical status separately.
-- Add historical timelines.
-- Display evidence and source links.
-Deliverable: Users can discover and investigate equipment through structured historical information.
-Phase 5 — Interactive 3D Environment
-Tasks
-- Integrate Three.js using React Three Fiber.
-- Load Moon and Mars 3D models.
-- Implement camera controls and lighting.
-- Add planetary surface locations.
-- Load equipment GLB models.
-- Add interactive equipment markers.
-- Connect markers to equipment API records.
-- Implement loading states and mobile performance optimizations.
-Deliverable: Interactive planetary environment where users can discover equipment by selecting locations.
-Phase 6 — Immersive Storytelling and Audio
-Tasks
-- Build story pages and chapter navigation.
-- Implement Read Mode.
-- Integrate browser-side Kokoro TTS.
-- Add play, pause, stop, and seek controls.
-- Add background ambience and sound effects.
-- Use Web Audio API for audio mixing.
-- Implement chapter-based playback.
-- Add narration loading and error states.
-- Keep the complete story transcript accessible.
-Deliverable: One complete story that works in both reading and listening modes.
-Phase 7 — Mission Expansion
-Tasks
-- Add additional verified lunar missions.
-- Add verified Mars missions.
-- Populate their equipment and historical events.
-- Attach evidence and source references.
-- Reuse the existing 3D and storytelling architecture.
-Deliverable: Platform that supports multiple missions across both destinations.
-Phase 8 — Testing and Deployment
-Tasks
-- Test all API endpoints.
-- Validate database relationships.
-- Test destination switching.
-- Test equipment markers and 3D interactions.
-- Test audio playback across supported browsers.
-- Check mobile responsiveness.
-- Optimize 3D models and media assets.
-- Deploy frontend and backend.
-- Configure production database and storage.
-- Verify source links and historical claims.
-Deliverable: Working, publicly accessible platform.
-5. Recommended Project Structure
-afterlight/
-├── apps/
-│   ├── web/
-│   │   ├── public/
-│   │   │   ├── models/
-│   │   │   ├── images/
-│   │   │   └── audio/
-│   │   └── src/
-│   │       ├── app/
-│   │       ├── components/
-│   │       │   ├── layout/
-│   │       │   ├── planet/
-│   │       │   ├── three/
-│   │       │   ├── mission/
-│   │       │   ├── equipment/
-│   │       │   ├── story/
-│   │       │   └── audio/
-│   │       ├── hooks/
-│   │       ├── services/
-│   │       └── lib/
-│   │
-│   └── api/
-│       ├── prisma/
-│       └── src/
-│           ├── config/
-│           ├── routes/
-│           ├── controllers/
-│           ├── services/
-│           ├── repositories/
-│           ├── validators/
-│           ├── middleware/
-│           └── integrations/
-│
-└── packages/
-    └── shared/
-6. MVP Priorities
-Must Have
-1. Moon/Mars destination switching.
-2. Multiple-mission-ready data model.
-3. Mission and equipment discovery.
-4. Equipment details and historical timeline.
-5. One interactive 3D planetary environment.
-6. One complete story with Read and Listen modes.
-7. Evidence and source references.
-Should Have
-1. Interactive 3D environments for both destinations.
-2. Multiple equipment markers.
-3. Mission and equipment search.
-4. Background ambience and sound effects.
-5. Responsive mobile experience.
-Future Enhancements
-1. More planetary missions and equipment.
-2. Advanced 3D surface reconstruction.
-3. More languages and narration voices.
-4. Educational quizzes.
-5. Advanced mission comparisons.
-7. Data Quality Requirements
-- Every important historical claim should have a supporting source.
-- Unknown equipment fates must remain marked as unknown.
-- Inferred locations must not be displayed as confirmed coordinates.
-- Operational status must not be confused with physical presence.
-- 3D locations should be labelled as approximate when exact positioning is unavailable.
-- Generated narration and recreated sound effects must not be represented as authentic historical recordings.
-8. Final Expected Outcome
-A cinematic, interactive Moon and Mars exploration platform where visitors can discover equipment left behind by humanity, explore its planetary environment, understand its historical significance, and experience its story through immersive narration.
+| Layer | Technology | Responsibility |
+|---|---|---|
+| Frontend | Next.js App Router + TypeScript | Website, routing, pages, and application UI |
+| Styling | Tailwind CSS | Responsive styling and layouts |
+| UI Components | shadcn/ui | Reusable controls, dialogs, tabs, and sliders |
+| 3D Rendering | Three.js + React Three Fiber + Drei | Planetary environments, equipment models, and interactive markers |
+| 3D Asset Creation | Blender; GLB/GLTF formats | Creating and optimizing 3D models |
+| UI Animation | Framer Motion | Page transitions, component animations, and content transitions |
+| Cinematic Animation | GSAP (optional) | Advanced hero animations and scroll-based sequences |
+| Backend | Node.js + Express.js + TypeScript | REST APIs and application logic |
+| Validation | Zod | Runtime validation of API inputs |
+| Database | PostgreSQL | Storing missions, equipment, events, stories, and evidence |
+| ORM | Prisma | Database schema, migrations, and type-safe queries |
+| API Documentation | Swagger / OpenAPI | API documentation and testing |
+| Narration | Kokoro TTS in the browser, or another TTS provider | Generating spoken story narration |
+| Audio Playback | HTML Audio + Web Audio API | Narration, ambient sounds, sound effects, and volume control |
+| File Storage | Cloudflare R2 or equivalent | Storing audio, images, and 3D assets |
+| Frontend Hosting | Vercel | Deploying the Next.js application |
+| Backend Hosting | Render, Railway, or equivalent | Deploying the Express API |
 
-AFTERLIGHT — The stories humanity left beyond Earth.
+## 3. Planned Features and Functional Requirements
+
+### 3.1 Authentication
+
+- Implement an interactive login and authentication experience using OAuth.
+- Allow users to sign in through supported authentication providers.
+- Provide a personalized experience for authenticated users.
+
+### 3.2 Home Page / Explore Landing Page
+
+- Create an immersive, visually engaging landing page featuring interactive 3D representations of the Moon and Mars.
+- The design should follow the provided reference image.
+- Allow users to switch between the Moon and Mars using an interactive toggle.
+- Provide an engaging introduction to the platform and its purpose.
+- Display relevant exploration statistics, such as the number of missions, equipment, stories, and available evidence.
+
+### 3.3 Planet-Based Equipment Exploration
+
+The equipment displayed on the Explore page should dynamically change based on the selected celestial body.
+
+**When the Moon is selected:**
+
+Display relevant lunar exploration hardware, including:
+
+- Apollo Lunar Modules: https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-059C
+- Lunar Roving Vehicles (LRVs): https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1971-063C
+
+**When Mars is selected:**
+
+Display robotic explorers and scientific equipment associated with Mars exploration, including:
+
+- Sojourner Rover: https://science.nasa.gov/mission/mars-pathfinder/
+- Spirit and Opportunity Rovers: https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/
+
+The equipment should be presented through visually engaging cards or interactive elements that allow users to explore individual missions and their associated hardware.
+
+### 3.4 Interactive Storytelling (Core Feature)
+
+Storytelling is the central component of this platform.
+
+Each piece of equipment or robotic explorer should have its own dedicated, informative, and interactive story experience.
+
+The storytelling experience should:
+
+- Present the equipment's history, mission objectives, and purpose.
+- Explain how the equipment was engineered and operated.
+- Highlight important mission events, challenges, and scientific discoveries.
+- Use scroll-based storytelling with interactive animations and visual transitions.
+- Incorporate relevant images, diagrams, and 3D visualizations to make complex scientific concepts easier to understand.
+- Establish a connection between the engineering of the hardware and the scientific knowledge humanity gained from its mission.
+
+**Future Enhancement:**
+
+Integrate a Text-to-Speech (TTS) module that allows users to listen to the stories through AI-generated narration.
+
+### 3.5 Equipment Specification / Metadata Page
+
+Each rover, spacecraft, or scientific instrument should have a dedicated specification page inspired by the second UI reference image.
+
+This page should present structured technical and historical information about the selected equipment, including:
+
+- Equipment name and mission name.
+- Launch date and mission duration.
+- Launch vehicle.
+- Manufacturer and country/agency.
+- Equipment type and primary purpose.
+- Dimensions and weight.
+- Power source.
+- Scientific instruments and capabilities.
+- Operational status.
+- Landing location or final known location.
+- Important mission milestones.
+- Scientific contributions and discoveries.
+
+The page should present technical information in a clean, organized, and visually engaging format, making it understandable to both beginners and space enthusiasts.
+
+## 4. Overall Product Vision
+
+AFTERLIGHT: Space Archaeology aims to transform the history of forgotten space exploration hardware into an interactive educational experience.
+
+Rather than simply presenting historical facts and technical specifications, the platform will allow users to explore the machines, understand their engineering, experience their journeys, and discover the scientific knowledge they left behind.
+
+The ultimate goal is to help school-age space enthusiasts develop a deeper appreciation for space exploration and the robotic explorers that made it possible.
