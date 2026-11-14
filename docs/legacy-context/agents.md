@@ -8,13 +8,16 @@ AFTERLIGHT is an interactive storytelling platform that introduces school-age sp
 
 Audience: school-age users first (roughly 9–17), adults second. Write and design accordingly.
 
-Source-of-truth documents (in docs/; if they conflict with this file, ask before proceeding):
+Source-of-truth documents (located in `context/`, also mirrored to `docs/` in production repository layout):
 
-Document	Purpose
-docs/PRD.md	What we are building and why
-docs/DEVELOPMENT_PLAN.md	Phases and task breakdown (MVP first)
-docs/USER_WORKFLOWS.md	User journeys and error paths
-docs/UI_UX_SPEC.md	Visual identity, layouts, components, motion
+| Document | Primary Location | Purpose |
+|---|---|---|
+| **PRD** | `context/Prd.md` (or `docs/PRD.md`) | Product specifications, MVP scope, core entities, risks |
+| **System Architecture** | `context/achitecture&techStack.md` | Architecture layers, data flow, security, topology |
+| **Development Plan** | `context/dev&taskBreakdown.md` (or `docs/DEVELOPMENT_PLAN.md`) | Phases and task breakdown (Phases 1–7 MVP, 8–10 Post-MVP) |
+| **User Workflows** | `context/userworkflow&Stories.md` (or `docs/USER_WORKFLOWS.md`) | User journeys (W1–W7) and error/edge cases |
+| **UX & UI Spec** | `context/uxDesignSpec.md` (or `docs/UI_UX_SPEC.md`) | Design tokens, typography, component guidelines, motion |
+| **Data & Research** | `context/data&research.md` | Factual NASA NSSDC research for launch hardware and missions |
 2. Scope Rules (MVP First)
 Build the MVP (Phases 1–7 of the development plan) before anything marked Post-MVP.
 MVP launch equipment: Moon: Apollo Lunar Module, Lunar Roving Vehicle. Mars: Sojourner, Spirit and Opportunity.

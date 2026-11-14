@@ -26,8 +26,8 @@ The platform will combine interactive storytelling, 3D visualizations, historica
 | Database | PostgreSQL | Storing missions, equipment, events, stories, and evidence |
 | ORM | Prisma | Database schema, migrations, and type-safe queries |
 | API Documentation | Swagger / OpenAPI | API documentation and testing |
-| Narration | Kokoro TTS in the browser, or another TTS provider | Generating spoken story narration |
-| Audio Playback | HTML Audio + Web Audio API | Narration, ambient sounds, sound effects, and volume control |
+| Narration | Kokoro TTS in the browser, or another TTS provider (Post-MVP) | Generating spoken story narration |
+| Audio Playback | HTML Audio + Web Audio API (Post-MVP) | Narration, ambient sounds, sound effects, and volume control |
 | File Storage | Cloudflare R2 or equivalent | Storing audio, images, and 3D assets |
 | Frontend Hosting | Vercel | Deploying the Next.js application |
 | Backend Hosting | Render, Railway, or equivalent | Deploying the Express API |

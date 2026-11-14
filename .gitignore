@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Production builds
+dist/
+build/
+.next/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Logs & Debugging
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# OS & Editor
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+
+# Database & Storage
+*.sqlite
+*.sqlite-journal
+prisma/*.db
+
+# Turbo / Cache
+.turbo/
+.cache/
+
+# Local backup of pre-redesign code
+.backup/
+*.tsbuildinfo
+next-env.d.ts

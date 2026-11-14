@@ -1,8 +1,8 @@
 Document purpose: A source-grounded research reference for developing AFTERLIGHT stories about human-made hardware that remains on the Moon and Mars.
 
 Research scope in this version
-- Moon: Apollo 11 and Apollo 15 hardware and experiments, based on the two NSSDCA extracts supplied for this project.
-- Mars: Mars Pathfinder and Viking 1, based on the NASA mission pages supplied by the project owner.
+- Moon: Apollo 11 and Apollo 15 hardware and experiments (Lunar Modules, EASEP, ALSEP, Lunar Roving Vehicle), based on NSSDCA extracts.
+- Mars: Mars Pathfinder (Sojourner rover & Carl Sagan Memorial Station) and Mars Exploration Rovers (Spirit & Opportunity) as core MVP launch equipment, plus Viking 1 as catalog expansion, based on NASA mission sources.
 - This is a research document, not a final story script or a complete inventory of all human-made objects on either world.
 1. Research and accuracy rules
 1. Distinguish between hardware deliberately left on a planetary surface, hardware that later impacted the surface, and spacecraft whose final location is unknown.
@@ -223,8 +223,60 @@ Do not claim from this source
 - That the lander is still operating.
 - That the Viking 1 orbiter is on the surface.
 - That the exact current physical condition of the lander is known from the cited mission page.
+
+6. Mars Exploration Rovers — Spirit and Opportunity (MER-A & MER-B)
+Mission overview
+- Mission: Mars Exploration Rover Mission (MER)
+- Spacecraft: Twin rovers named Spirit (MER-A) and Opportunity (MER-B)
+- Launch dates: Spirit on 10 June 2003; Opportunity on 7 July 2003
+- Landings: 
+  - Spirit landed 4 January 2004 at Gusev Crater, Mars
+  - Opportunity landed 25 January 2004 at Meridiani Planum, Mars
+- Primary mission design: 90 Martian days (sols) for each rover
+- Last contact / operational end:
+  - Spirit: 22 March 2010 (operated over 6 years; traveled 7.73 km)
+  - Opportunity: 10 June 2018 (operated over 14 years; traveled 45.16 km; mission declared complete 13 February 2019)
+- Source: NASA Science — Mars Exploration Rovers (Spirit and Opportunity).
+
+Hardware left on Mars
+A. Twin rovers (Spirit and Opportunity)
+- Mass: ~185 kg each.
+- Mobility: Six-wheel rocker-bogie suspension system capable of traversing rugged Martian terrain.
+- Power: Solar arrays supplemented by rechargeable lithium-ion batteries and eight Radioisotope Heater Units (RHUs) containing small pellets of plutonium-238 to keep internal electronics warm during frigid Martian nights.
+- Payload & Instruments:
+  - Pancam (Panoramic Camera) — high-resolution stereo color imaging.
+  - Mini-TES (Miniature Thermal Emission Spectrometer) — mineralogy and temperature profiling.
+  - Mossbauer Spectrometer & APXS (Alpha Particle X-Ray Spectrometer) — iron mineralogy and elemental composition.
+  - Microscopic Imager (MI) — extreme close-up imaging of rocks and soil.
+  - RAT (Rock Abrasion Tool) — grinding wheels to remove weathered exterior surfaces and expose fresh interior rock.
+
+B. Entry, Descent, and Landing (EDL) hardware
+- Each rover was delivered via an aeroshell (heat shield and backshell), parachute, retrorockets, and a tetrahedral lander enclosed in cushioning airbags that bounced to a stop before opening. These separate structural components remain at their respective landing locations.
+
+What did the rovers discover?
+- Spirit: In the Columbia Hills of Gusev Crater, after its right-front wheel seized in 2006, dragging the wheel uncovered pure silica soil—compelling evidence that ancient hot springs or steam vents once existed on Mars.
+- Opportunity: At Meridiani Planum, discovered tiny iron-rich spheres nicknamed "blueberries" and sulfate minerals inside Eagle and Endurance craters, demonstrating that liquid, acidic water once soaked the surface for extended periods.
+
+Final known locations
+- Spirit: Stationary at "Troy" on the west side of Home Plate in Gusev Crater (became lodged in soft soil in 2009; communications ceased March 2010 after solar power dropped during Martian winter).
+- Opportunity: Stationary in Perseverance Valley on the western rim of Endeavour Crater (overwhelmed by a global dust storm in June 2018 that starved its solar panels).
+
+Why this hardware matters
+Spirit and Opportunity transformed humanity's view of Mars from a dry, desolate sphere into a world with a rich, dynamic history of ancient liquid water. Their extraordinary longevity (decades beyond their 90-sol warranties) showcased durable robotics engineering and active field science.
+
+Story angles supported by NASA
+- Two identical twin explorers sent to opposite sides of a planet.
+- A stuck wheel that accidentally led to one of the mission's greatest discoveries (pure silica deposits).
+- Solar panels repeatedly cleaned by Martian dust devils ("cleaning events"), dramatically extending mission lifespans.
+- The dramatic contrast between human engineers on Earth and solitary robots enduring harsh Martian dust storms.
+
+Do not claim from this source
+- That either Spirit or Opportunity is currently communicating or mobile.
+- That the rovers discovered living organisms (they discovered past habitable aqueous environments, not life).
+- That the descent backshells or airbags are intact in their original launch states.
+
 PART C — CROSS-MISSION RESEARCH NOTES
-6. Confirmed examples in this document
+7. Confirmed examples in this document
 World	Mission / hardware	What the source establishes	End-of-operation information
 Moon	Apollo 11 descent stage	Descent stage was left on the Moon	No operating experiment status applies to the stage itself
 Moon	Apollo 11 EASEP	Surface experiments deployed near the landing site	Experiment terminated 27 August 1969
@@ -232,13 +284,16 @@ Moon	Apollo 11 laser ranging retroreflector	Deployed separately, about 5 m NNW o
 Moon	Apollo 15 descent stage	Descent stage was left on the Moon	No operating experiment status applies to the stage itself
 Moon	Apollo 15 ALSEP	Multiple scientific instruments connected to a central station	Shut down 30 September 1977
 Moon	Apollo 15 Lunar Module jettisoned stage	Separate from the descent stage; impacted the Moon	Impact recorded 3 August 1971
+Moon	Apollo 15 Lunar Roving Vehicle (LRV)	Traversed 27.9 km; parked on surface	Left on surface at mission conclusion (August 1971)
 Mars	Mars Pathfinder lander / Carl Sagan Memorial Station	Landed at Ares Vallis and operated with Sojourner	Final data transmission 27 September 1997
 Mars	Sojourner rover	Rover deployed from Pathfinder lander; operated 83 days	Mission data ended with Pathfinder's final transmission
-Mars	Viking 1 lander	Surface laboratory with imaging, sampling, biology and weather instruments	Communications ended in November 1982
+Mars	Spirit rover (MER-A)	Operated 6+ years at Gusev Crater; traveled 7.73 km	Last communication 22 March 2010; remains at "Troy"
+Mars	Opportunity rover (MER-B)	Operated 14+ years at Meridiani Planum; traveled 45.16 km	Last communication 10 June 2018; remains at Perseverance Valley
+Mars	Viking 1 lander (Catalog Expansion)	Surface laboratory with imaging, sampling, biology and weather instruments	Communications ended in November 1982
 Mars	Viking 1 orbiter	Separate orbital spacecraft	Shut down 7 August 1980
 
 
-7. Terminology to use carefully
+8. Terminology to use carefully
 - Left on the surface: Hardware intentionally or operationally remaining at a landing site after the crew or mission phase departed.
 - Lander: The spacecraft or landing platform that reaches the surface.
 - Descent stage: The lower part of an Apollo Lunar Module, used for landing and left on the Moon.
@@ -247,7 +302,7 @@ Mars	Viking 1 orbiter	Separate orbital spacecraft	Shut down 7 August 1980
 - Rover: A mobile vehicle that travels across a planetary surface.
 - Experiment package / science station: Instruments deployed to collect measurements after the landing mission.
 - Mission ended / communications ended: The end of data return or operations; it does not mean the hardware vanished.
-8. Research gaps — not yet established by the sources used here
+9. Research gaps — not yet established by the sources used here
 The following information should not be invented. It requires additional authoritative sources before it can be included in AFTERLIGHT content:
 - A comprehensive list of all human-made objects left on the Moon.
 - A comprehensive list of all human-made objects left on Mars.
@@ -258,7 +313,7 @@ The following information should not be invented. It requires additional authori
 - Exact present-day status of the Apollo 11 laser ranging retroreflector from the supplied extract alone.
 - Detailed final resting condition of Pathfinder's airbags and other landing components.
 - A complete list of all objects left by Viking 1 beyond the lander itself.
-9. Sources
+10. Sources
 User-provided research extracts
 1. NSSDCA — Apollo 11 Lunar Module / EASEP extract, supplied by the project owner in this conversation. The extract includes the mission profile, Lunar Module stages, EASEP instruments, deployment and shutdown information.
 2. NSSDCA — Apollo 15 Lunar Module / ALSEP extract, supplied by the project owner in this conversation. The extract includes the mission profile, Lunar Module stages, ALSEP instruments, SNAP-27 RTG, rover activity and shutdown information.
@@ -269,7 +324,9 @@ NASA web sources
 6. NASA Science — Viking Spacecraft and Science
 7. NASA Science — Mars Pathfinder Lands on Mars
 8. NASA Science — Mars Pathfinder Landing Site
-10. Use of this research in AFTERLIGHT
+9. NASA Science — Mars Exploration Rovers (Spirit and Opportunity) Overview & Science Results
+10. NASA Solar System Exploration — Spirit & Opportunity Mission Profiles
+11. Use of this research in AFTERLIGHT
 This document supplies factual building blocks for future storytelling. It does not define the website's user interface, navigation, story format, audio design, or database architecture.
 
 When creating a story from these notes:
@@ -279,4 +336,4 @@ When creating a story from these notes:
 - Make the distinction between surface hardware and orbiting spacecraft clear.
 - Do not suggest that an inactive object is still communicating or performing science.
 - Link each published story to its NASA source material so readers can check the underlying facts.
-Research status: Initial source-based research for four examples (Apollo 11, Apollo 15, Mars Pathfinder and Viking 1). This is not an exhaustive survey of lunar or Martian surface hardware.
+Research status: Source-based research covering the 4 MVP launch hardware targets (Apollo 11 & 15 Lunar Modules, Apollo 15 LRV, Mars Pathfinder & Sojourner, and MER Spirit & Opportunity) plus Viking 1 lander as a catalog expansion.

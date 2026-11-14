@@ -1,0 +1,35 @@
+{
+  "name": "afterlight",
+  "version": "2.0.0",
+  "private": true,
+  "description": "AFTERLIGHT: an interactive 3D archive of the machines left behind on the Moon and Mars.",
+  "scripts": {
+    "dev": "next dev -p 3000",
+    "build": "next build",
+    "start": "next start -p 3000",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "packageManager": "pnpm@10.34.3",
+  "dependencies": {
+    "@fontsource-variable/inter": "5.2.5",
+    "@fontsource-variable/jetbrains-mono": "5.2.5",
+    "@fontsource/instrument-serif": "5.2.5",
+    "@react-three/drei": "10.0.7",
+    "@react-three/fiber": "9.8.2",
+    "next": "15.5.29",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "three": "0.174.0",
+    "zod": "3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "22.13.4",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.2.3",
+    "@types/three": "0.174.0",
+    "typescript": "5.7.3",
+    "vitest": "3.2.4"
+  }
+}
