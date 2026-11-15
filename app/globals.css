@@ -253,3 +253,38 @@ html[data-reduced-motion="true"] .fade-in {
     transition-duration: 1ms !important;
   }
 }
+
+/* ==========================================================================
+   GLOBAL DARK GLASS SCROLLBAR
+   Standardized across WebKit (Chrome, Edge, Safari) and Firefox
+   ========================================================================== */
+
+html,
+body,
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(236, 231, 221, 0.22) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(236, 231, 221, 0.2);
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

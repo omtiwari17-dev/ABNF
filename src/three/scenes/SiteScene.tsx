@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import { useThree } from "@react-three/fiber";
 import { Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
@@ -16,6 +16,7 @@ import { makeTerrainSpec } from "@/lib/terrain";
 import { settingsFor } from "@/lib/quality";
 import { easeOutCubic } from "@/lib/easing";
 import { setState, useExperience } from "@/lib/store";
+import { disposeThreeHierarchy } from "@/lib/dispose";
 
 const SUN = {
   // Low lunar sun: long, hard shadows under a black sky.
@@ -112,6 +113,17 @@ export function SiteScene({ machine }: { machine: Machine }) {
   const hotspotId = useExperience((s) => s.hotspot);
   const q = settingsFor(quality);
   const spec = useMemo(() => makeTerrainSpec(machine.world, machine.scene.terrainSeed), [machine.world, machine.scene.terrainSeed]);
+  const siteGroupRef = useRef<THREE.Group>(null);
+
+  // Clean up WebGL resources when leaving this site scene
+  useEffect(() => {
+    const currentGroup = siteGroupRef.current;
+    return () => {
+      if (currentGroup) {
+        disposeThreeHierarchy(currentGroup);
+      }
+    };
+  }, []);
 
   const shot: ShotRequest | null = useMemo(() => {
     const d = (s: number) => (reduced ? 0 : s);
@@ -139,7 +151,7 @@ export function SiteScene({ machine }: { machine: Machine }) {
   }, [machine, mode, chapter, hotspotId, reduced]);
 
   return (
-    <>
+    <group ref={siteGroupRef}>
       <Arrival machine={machine} />
       <FrameOffset amount={5} />
       <Atmosphere machine={machine} />
@@ -170,6 +182,6 @@ export function SiteScene({ machine }: { machine: Machine }) {
       <Rocks spec={spec} count={q.rockCount} shadows={q.shadows} />
       <MachineModel model={machine.model} />
       <Hotspots machine={machine} />
-    </>
+    </group>
   );
 }

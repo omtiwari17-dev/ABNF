@@ -154,31 +154,73 @@ export function MachineView({ machine, next }: { machine: Machine; next: { href:
 
       {mode === "story" ? (
         <section className="story panel" aria-roledescription="story" aria-label={`${machine.name}: story`}>
-          <p className="label story__beat">
-            {chapter + 1} / {total} · {BEATS[ch.beat]}
-          </p>
-          <div key={ch.id} className="fade-in" aria-live="polite">
-            <h2 className="display story__title">{ch.title}</h2>
-            {ch.body.map((p) => <p key={p}>{p}</p>)}
-            <Cites ids={ch.sourceIds} sources={machine.sources} />
+          <div className="story__header">
+            <p className="label story__beat">
+              {chapter + 1} / {total} · {BEATS[ch.beat]}
+            </p>
           </div>
-          <div className="story__nav">
-            <button type="button" className="btn btn--icon" aria-label="Previous chapter" disabled={chapter === 0} onClick={() => setState({ chapter: chapter - 1 })}>←</button>
-            <ol className="dots" aria-hidden="true">
-              {machine.chapters.map((c, i) => <li key={c.id} data-on={i === chapter} />)}
-            </ol>
-            {!last ? (
-              <button type="button" className="btn btn--solid" onClick={() => setState({ chapter: chapter + 1 })}>Continue →</button>
-            ) : (
-              <button type="button" className="btn btn--signal" onClick={() => setTx(true)}>Last signal</button>
+
+          <div className="story__scroll-body" tabIndex={0} role="region" aria-label="Story chapter text">
+            <div key={ch.id} className="fade-in" aria-live="polite">
+              <h2 className="display story__title">{ch.title}</h2>
+              {ch.body.map((p) => <p key={p}>{p}</p>)}
+              <Cites ids={ch.sourceIds} sources={machine.sources} />
+            </div>
+
+            {last && (
+              <Link href={next.href} className="next-card">
+                <span className="label">Next{next.world !== machine.world ? ` · on ${next.world === "moon" ? "the Moon" : "Mars"}` : ""}</span>
+                <span className="display next-card__name">{next.name} →</span>
+              </Link>
             )}
           </div>
-          {last && (
-            <Link href={next.href} className="next-card">
-              <span className="label">Next{next.world !== machine.world ? ` · on ${next.world === "moon" ? "the Moon" : "Mars"}` : ""}</span>
-              <span className="display next-card__name">{next.name} →</span>
-            </Link>
-          )}
+
+          <div className="story__nav">
+            <button
+              type="button"
+              className="btn btn--icon"
+              aria-label="Previous chapter (Left arrow)"
+              title="Previous chapter (Left arrow)"
+              disabled={chapter === 0}
+              onClick={() => setState({ chapter: chapter - 1 })}
+            >
+              ←
+            </button>
+            <ol className="dots" role="tablist" aria-label="Chapter progress">
+              {machine.chapters.map((c, i) => (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    className="dot-button"
+                    role="tab"
+                    aria-selected={i === chapter}
+                    aria-label={`Go to chapter ${i + 1}: ${c.title}`}
+                    title={`Chapter ${i + 1}: ${c.title}`}
+                    onClick={() => setState({ chapter: i })}
+                  />
+                </li>
+              ))}
+            </ol>
+            {!last ? (
+              <button
+                type="button"
+                className="btn btn--solid"
+                title="Continue to next chapter (Right arrow)"
+                onClick={() => setState({ chapter: chapter + 1 })}
+              >
+                Continue →
+              </button>
+            ) : (
+              <button
+                type="button"
+                className="btn btn--signal"
+                title="View last recorded transmission"
+                onClick={() => setTx(true)}
+              >
+                Last signal
+              </button>
+            )}
+          </div>
         </section>
       ) : (
         <section className="inspect panel" aria-label="Instruments">
